@@ -174,55 +174,6 @@
           <!-- Video content will be dynamically loaded here -->
         </div>
 
-        <!-- Navigation -->
-        <div class="flex justify-between items-center mt-8">
-          <button
-            id="prev-btn"
-            class="flex items-center space-x-2 px-4 py-2 bg-gray-200 dark:bg-gray-700 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            <svg
-              class="w-5 h-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M15 19l-7-7 7-7"
-              ></path>
-            </svg>
-            <span>Previous</span>
-          </button>
-
-          <div class="flex space-x-2">
-            <span
-              id="page-info"
-              class="text-sm text-gray-600 dark:text-gray-400 px-4 py-2"
-            ></span>
-          </div>
-
-          <button
-            id="next-btn"
-            class="flex items-center space-x-2 px-4 py-2 bg-gray-200 dark:bg-gray-700 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            <span>Next</span>
-            <svg
-              class="w-5 h-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M9 5l7 7-7 7"
-              ></path>
-            </svg>
-          </button>
-        </div>
       </div>
     </div>
 
@@ -275,14 +226,6 @@
           document
             .getElementById("theme-toggle")
             .addEventListener("click", this.toggleTheme.bind(this))
-
-          // Navigation
-          document
-            .getElementById("prev-btn")
-            .addEventListener("click", this.previousVideo.bind(this))
-          document
-            .getElementById("next-btn")
-            .addEventListener("click", this.nextVideo.bind(this))
 
           // Search
           document
@@ -405,7 +348,7 @@
             videos = videos.filter(
               video =>
                 video.title.toLowerCase().includes(this.searchTerm) ||
-                video.prompt.toLowerCase().includes(this.searchTerm) ||
+                video.description.toLowerCase().includes(this.searchTerm) ||
                 video.category.toLowerCase().includes(this.searchTerm)
             )
           }
@@ -418,11 +361,61 @@
           const video = this.filteredVideos[this.currentVideoIndex]
 
           if (!video) {
+            // Show placeholder with same structure when no video found
             container.innerHTML = `
-                        <div class="text-center py-12">
-                            <p class="text-gray-500 dark:text-gray-400">No videos found</p>
+                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
+                        <!-- Video Placeholder -->
+                        <div class="video-container bg-gray-200 dark:bg-gray-700 relative flex items-center justify-center">
+                            <div class="text-center">
+                                <svg class="w-16 h-16 text-gray-400 dark:text-gray-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                                </svg>
+                                <p class="text-gray-500 dark:text-gray-400 text-lg">No videos found</p>
+                                <p class="text-gray-400 dark:text-gray-500 text-sm mt-1">Try adjusting your search or category filter</p>
+                            </div>
                         </div>
-                    `
+                        
+                        <!-- Content Placeholder -->
+                        <div class="p-6">
+                            <!-- Header with Navigation -->
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="flex items-center space-x-3">
+                                    <button id="copy-prompt" class="p-2 text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 rounded-lg transition-colors cursor-not-allowed" disabled>
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                                        </svg>
+                                    </button>
+                                    <h2 class="text-2xl font-bold text-gray-400 dark:text-gray-500">
+                                        No Title Available
+                                    </h2>
+                                </div>
+                                <div class="flex space-x-2">
+                                    <button id="prev-btn" class="flex items-center space-x-2 px-4 py-2 bg-gray-200 dark:bg-gray-700 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                                        </svg>
+                                        <span>Previous</span>
+                                    </button>
+                                    <button id="next-btn" class="flex items-center space-x-2 px-4 py-2 bg-gray-200 dark:bg-gray-700 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                                        <span>Next</span>
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <!-- Prompt Placeholder -->
+                            <div>
+                                <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
+                                    <p class="text-gray-400 dark:text-gray-500 text-sm leading-relaxed italic">
+                                        No prompt available. Please select a different category or adjust your search terms.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `
             this.updateNavigation()
             return
           }
@@ -440,41 +433,46 @@
                                 preload="metadata"
                                 poster=""
                             >
-                                <source src="${video.video_url}" type="video/mp4">
+                                <source src="${video.url}" type="video/mp4">
                                 Your browser does not support the video tag.
                             </video>
                         </div>
                         
                         <!-- Content -->
                         <div class="p-6">
-                            <!-- Header -->
-                            <div class="flex items-start justify-between mb-4">
-                                <div class="flex-1">
-                                    <div class="flex items-center space-x-2 mb-2">
-                                        <span class="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs font-medium rounded-full">
-                                            ${categoryData.name}
-                                        </span>
-                                    </div>
-                                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                            <!-- Header with Navigation -->
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="flex items-center space-x-3">
+                                    <button id="copy-prompt" class="p-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 rounded-lg transition-colors">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                                        </svg>
+                                    </button>
+                                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white">
                                         ${video.title}
                                     </h2>
+                                </div>
+                                <div class="flex space-x-2">
+                                    <button id="prev-btn" class="flex items-center space-x-2 px-4 py-2 bg-gray-200 dark:bg-gray-700 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                                        </svg>
+                                        <span>Previous</span>
+                                    </button>
+                                    <button id="next-btn" class="flex items-center space-x-2 px-4 py-2 bg-gray-200 dark:bg-gray-700 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+                                        <span>Next</span>
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                        </svg>
+                                    </button>
                                 </div>
                             </div>
                             
                             <!-- Prompt -->
-                            <div class="mb-6">
-                                <div class="flex items-center justify-between mb-3">
-                                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Prompt</h3>
-                                    <button id="copy-prompt" class="flex items-center space-x-1 px-3 py-1 text-sm bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-lg transition-colors">
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
-                                        </svg>
-                                        <span>Copy</span>
-                                    </button>
-                                </div>
+                            <div>
                                 <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
-                                    <p class="text-gray-700 dark:text-gray-300 leading-relaxed" id="prompt-text">
-                                        ${video.prompt}
+                                    <p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed" id="prompt-text">
+                                        ${video.description}
                                     </p>
                                 </div>
                             </div>
@@ -486,7 +484,7 @@
           document
             .getElementById("copy-prompt")
             .addEventListener("click", () => {
-              navigator.clipboard.writeText(video.prompt).then(() => {
+              navigator.clipboard.writeText(video.description).then(() => {
                 const btn = document.getElementById("copy-prompt")
                 const originalText = btn.innerHTML
                 btn.innerHTML = `
@@ -501,6 +499,10 @@
               })
             })
 
+          // Add navigation functionality to new buttons
+          document.getElementById("prev-btn").addEventListener("click", this.previousVideo.bind(this))
+          document.getElementById("next-btn").addEventListener("click", this.nextVideo.bind(this))
+
           this.updateNavigation()
           this.updateVideoInfo()
         }
@@ -508,17 +510,10 @@
         updateNavigation() {
           const prevBtn = document.getElementById("prev-btn")
           const nextBtn = document.getElementById("next-btn")
-          const pageInfo = document.getElementById("page-info")
 
           prevBtn.disabled = this.currentVideoIndex === 0
           nextBtn.disabled =
             this.currentVideoIndex >= this.filteredVideos.length - 1
-
-          if (this.filteredVideos.length > 0) {
-            pageInfo.textContent = `${this.currentVideoIndex + 1} of ${this.filteredVideos.length}`
-          } else {
-            pageInfo.textContent = "0 of 0"
-          }
         }
 
         updateVideoInfo() {
