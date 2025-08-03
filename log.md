@@ -1,1 +1,0 @@
-- 2025-08-03: Created `extracted-content.md` with the text and video links from `preview.html`.
