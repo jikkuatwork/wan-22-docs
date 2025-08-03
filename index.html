@@ -356,6 +356,19 @@
           this.filteredVideos = videos
         }
 
+        cleanVideoDescription(description, title) {
+          if (!description) return description;
+          
+          // Simple approach: Remove any bold text pattern at the beginning
+          // Matches: **anything**, **anything**., **anything**,, etc.
+          let cleaned = description.replace(/^\*\*[^*]+\*\*[*,，.\s]*/g, '');
+          
+          // Clean up any remaining leading punctuation and whitespace
+          cleaned = cleaned.replace(/^[,，.\s]+/, '').trim();
+          
+          return cleaned;
+        }
+
         renderCurrentVideo() {
           const container = document.getElementById("video-container")
           const video = this.filteredVideos[this.currentVideoIndex]
@@ -472,7 +485,7 @@
                             <div>
                                 <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
                                     <p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed" id="prompt-text">
-                                        ${video.description}
+                                        ${this.cleanVideoDescription(video.description, video.title)}
                                     </p>
                                 </div>
                             </div>
@@ -484,18 +497,17 @@
           document
             .getElementById("copy-prompt")
             .addEventListener("click", () => {
-              navigator.clipboard.writeText(video.description).then(() => {
+              navigator.clipboard.writeText(this.cleanVideoDescription(video.description, video.title)).then(() => {
                 const btn = document.getElementById("copy-prompt")
-                const originalText = btn.innerHTML
+                const originalIcon = btn.innerHTML
                 btn.innerHTML = `
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                             </svg>
-                            <span>Copied!</span>
                         `
                 setTimeout(() => {
-                  btn.innerHTML = originalText
-                }, 2000)
+                  btn.innerHTML = originalIcon
+                }, 1500)
               })
             })
 
