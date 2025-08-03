@@ -108,12 +108,12 @@
     </style>
   </head>
   <body
-    class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300"
+    class="bg-neutral-50 dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100 transition-colors duration-300"
   >
     <!-- Mobile Menu Button -->
     <button
       id="mobile-menu-btn"
-      class="fixed top-4 left-4 z-50 lg:hidden bg-white dark:bg-gray-800 p-2 rounded-lg shadow-lg"
+      class="fixed top-4 left-4 z-50 lg:hidden bg-white dark:bg-neutral-800 p-2 rounded-lg shadow-lg"
     >
       <svg
         class="w-6 h-6"
@@ -133,7 +133,7 @@
     <!-- Theme Toggle -->
     <button
       id="theme-toggle"
-      class="fixed top-4 right-4 z-50 bg-white dark:bg-gray-800 p-2 rounded-lg shadow-lg"
+      class="fixed top-4 right-4 z-50 bg-white dark:bg-neutral-800 p-2 rounded-lg shadow-lg"
     >
       <svg
         id="sun-icon"
@@ -168,30 +168,35 @@
     <!-- Sidebar -->
     <div
       id="sidebar"
-      class="fixed inset-y-0 left-0 z-40 w-80 bg-white dark:bg-gray-800 shadow-xl transform -translate-x-full lg:translate-x-0 sidebar-transition"
+      class="fixed inset-y-0 left-0 z-40 w-80 bg-white dark:bg-neutral-800 shadow-xl transform -translate-x-full lg:translate-x-0 sidebar-transition"
     >
       <div class="flex flex-col h-full">
         <!-- Header -->
-        <div class="p-6 border-b border-gray-200 dark:border-gray-700">
-          <h1 class="text-2xl font-bold text-gray-900 dark:text-white">
-            WAN 2.2
-          </h1>
-          <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
-            AI Video Generation Examples
-          </p>
+        <div class="p-6 border-b border-neutral-200 dark:border-neutral-700">
+          <div class="flex items-center space-x-3">
+            <img src="assets/logo.png" alt="Wan 2.2 Logo" class="w-8 h-8">
+            <div>
+              <h1 class="text-2xl font-bold text-neutral-900 dark:text-white">
+                Wan 2.2
+              </h1>
+              <p class="text-sm text-neutral-600 dark:text-neutral-400 mt-1">
+                AI Video Generation Examples
+              </p>
+            </div>
+          </div>
         </div>
 
         <!-- Search -->
-        <div class="p-4 border-b border-gray-200 dark:border-gray-700">
+        <div class="p-4 border-b border-neutral-200 dark:border-neutral-700">
           <div class="relative">
             <input
               id="search-input"
               type="text"
               placeholder="Search videos..."
-              class="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              class="w-full pl-10 pr-4 py-2 border border-neutral-300 dark:border-neutral-600 rounded-lg bg-neutral-50 dark:bg-neutral-700 text-neutral-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
             <svg
-              class="absolute left-3 top-2.5 w-5 h-5 text-gray-400"
+              class="absolute left-3 top-2.5 w-5 h-5 text-neutral-400"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -220,8 +225,8 @@
         </div>
 
         <!-- Footer -->
-        <div class="p-4 border-t border-gray-200 dark:border-gray-700">
-          <p class="text-xs text-gray-500 dark:text-gray-400">
+        <div class="p-4 border-t border-neutral-200 dark:border-neutral-700">
+          <p class="text-xs text-neutral-500 dark:text-neutral-400">
             <span id="current-video-info">Video 1 of 94</span>
           </p>
         </div>
@@ -339,7 +344,7 @@
               const count = this.getVideosForCategory(cat).length
 
               return `
-                        <button class="category-btn w-full text-left px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors text-gray-700 dark:text-gray-300" data-category="${cat}">
+                        <button class="category-btn w-full text-left px-3 py-2 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-colors text-neutral-700 dark:text-neutral-300" data-category="${cat}">
                             ${categoryData.name} (${count})
                         </button>
                     `
@@ -379,7 +384,7 @@
                 "dark:text-blue-100",
                 "font-medium"
               )
-              btn.classList.remove("text-gray-700", "dark:text-gray-300")
+              btn.classList.remove("text-neutral-700", "dark:text-neutral-300")
             } else {
               btn.classList.remove(
                 "bg-blue-100",
@@ -388,7 +393,7 @@
                 "dark:text-blue-100",
                 "font-medium"
               )
-              btn.classList.add("text-gray-700", "dark:text-gray-300")
+              btn.classList.add("text-neutral-700", "dark:text-neutral-300")
             }
           })
 
@@ -439,55 +444,55 @@
           if (!video) {
             // Show placeholder with same structure when no video found
             container.innerHTML = `
-                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
+                    <div class="bg-white dark:bg-neutral-800 rounded-xl shadow-lg overflow-hidden">
                         <!-- Video Placeholder -->
-                        <div class="video-container bg-gray-200 dark:bg-gray-700 relative flex items-center justify-center">
+                        <div class="video-container bg-neutral-200 dark:bg-neutral-700 relative flex items-center justify-center">
                             <div class="text-center">
-                                <svg class="w-16 h-16 text-gray-400 dark:text-gray-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg class="w-16 h-16 text-neutral-400 dark:text-neutral-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
                                 </svg>
-                                <p class="text-gray-500 dark:text-gray-400 text-lg">No videos found</p>
-                                <p class="text-gray-400 dark:text-gray-500 text-sm mt-1">Try adjusting your search or category filter</p>
+                                <p class="text-neutral-500 dark:text-neutral-400 text-lg">No videos found</p>
+                                <p class="text-neutral-400 dark:text-neutral-500 text-sm mt-1">Try adjusting your search or category filter</p>
                             </div>
                         </div>
                         
                         <!-- Content Placeholder -->
                         <div class="p-6">
-                            <!-- Header with Navigation -->
-                            <div class="flex items-center justify-between mb-4">
-                                <div class="flex items-center space-x-3">
-                                    <button id="copy-prompt" class="p-2 text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 rounded-lg transition-colors cursor-not-allowed" disabled>
-                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
-                                        </svg>
-                                    </button>
-                                    <h2 class="text-2xl font-bold text-gray-400 dark:text-gray-500">
-                                        No Title Available
-                                    </h2>
-                                </div>
-                                <div class="flex space-x-2">
-                                    <button id="prev-btn" class="flex items-center space-x-2 px-4 py-2 bg-gray-200 dark:bg-gray-700 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed" disabled>
-                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-                                        </svg>
-                                        <span>Previous</span>
-                                    </button>
-                                    <button id="next-btn" class="flex items-center space-x-2 px-4 py-2 bg-gray-200 dark:bg-gray-700 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed" disabled>
-                                        <span>Next</span>
-                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                                        </svg>
-                                    </button>
-                                </div>
+                            <!-- Header -->
+                            <div class="flex items-center space-x-3 mb-4">
+                                <button id="copy-prompt" class="p-2 text-neutral-400 dark:text-neutral-500 hover:text-neutral-600 dark:hover:text-neutral-300 rounded-lg transition-colors cursor-not-allowed" disabled>
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                                    </svg>
+                                </button>
+                                <h2 class="text-2xl font-bold text-neutral-400 dark:text-neutral-500">
+                                    No Title Available
+                                </h2>
                             </div>
                             
                             <!-- Prompt Placeholder -->
                             <div>
-                                <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
-                                    <p class="text-gray-400 dark:text-gray-500 text-sm leading-relaxed italic">
+                                <div class="bg-neutral-50 dark:bg-neutral-700 rounded-lg p-4">
+                                    <p class="text-neutral-400 dark:text-neutral-500 text-sm leading-relaxed italic">
                                         No prompt available. Please select a different category or adjust your search terms.
                                     </p>
                                 </div>
+                            </div>
+                            
+                            <!-- Navigation -->
+                            <div class="flex justify-between items-center mt-6">
+                                <button id="prev-btn" class="flex items-center space-x-2 px-4 py-2 bg-neutral-200 dark:bg-neutral-700 rounded-lg hover:bg-neutral-300 dark:hover:bg-neutral-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                                    </svg>
+                                    <span>Previous</span>
+                                </button>
+                                <button id="next-btn" class="flex items-center space-x-2 px-4 py-2 bg-neutral-200 dark:bg-neutral-700 rounded-lg hover:bg-neutral-300 dark:hover:bg-neutral-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                                    <span>Next</span>
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                    </svg>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -499,7 +504,7 @@
           const categoryData = this.data.categories[video.category]
 
           container.innerHTML = `
-                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
+                    <div class="bg-white dark:bg-neutral-800 rounded-xl shadow-lg overflow-hidden">
                         <!-- Video -->
                         <div class="video-container bg-black relative">
                             <video 
@@ -516,41 +521,41 @@
                         
                         <!-- Content -->
                         <div class="p-6">
-                            <!-- Header with Navigation -->
-                            <div class="flex items-center justify-between mb-4">
-                                <div class="flex items-center space-x-3">
-                                    <button id="copy-prompt" class="p-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 rounded-lg transition-colors">
-                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
-                                        </svg>
-                                    </button>
-                                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white">
-                                        ${video.title}
-                                    </h2>
-                                </div>
-                                <div class="flex space-x-2">
-                                    <button id="prev-btn" class="flex items-center space-x-2 px-4 py-2 bg-gray-200 dark:bg-gray-700 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
-                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-                                        </svg>
-                                        <span>Previous</span>
-                                    </button>
-                                    <button id="next-btn" class="flex items-center space-x-2 px-4 py-2 bg-gray-200 dark:bg-gray-700 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
-                                        <span>Next</span>
-                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                                        </svg>
-                                    </button>
-                                </div>
+                            <!-- Header -->
+                            <div class="flex items-center space-x-3 mb-4">
+                                <button id="copy-prompt" class="p-2 text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-200 rounded-lg transition-colors">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                                    </svg>
+                                </button>
+                                <h2 class="text-2xl font-bold text-neutral-900 dark:text-white">
+                                    ${video.title}
+                                </h2>
                             </div>
                             
                             <!-- Prompt -->
                             <div>
-                                <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
-                                    <p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed" id="prompt-text">
+                                <div class="bg-neutral-50 dark:bg-neutral-700 rounded-lg p-4">
+                                    <p class="text-neutral-700 dark:text-neutral-300 text-sm leading-relaxed" id="prompt-text">
                                         ${this.cleanVideoDescription(video.description, video.title)}
                                     </p>
                                 </div>
+                            </div>
+                            
+                            <!-- Navigation -->
+                            <div class="flex justify-between items-center mt-6">
+                                <button id="prev-btn" class="flex items-center space-x-2 px-4 py-2 bg-neutral-200 dark:bg-neutral-700 rounded-lg hover:bg-neutral-300 dark:hover:bg-neutral-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                                    </svg>
+                                    <span>Previous</span>
+                                </button>
+                                <button id="next-btn" class="flex items-center space-x-2 px-4 py-2 bg-neutral-200 dark:bg-neutral-700 rounded-lg hover:bg-neutral-300 dark:hover:bg-neutral-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+                                    <span>Next</span>
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                    </svg>
+                                </button>
                             </div>
                         </div>
                     </div>

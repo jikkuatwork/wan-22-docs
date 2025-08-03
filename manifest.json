@@ -4,7 +4,7 @@
   "description": "Wan 2.2 Docs",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#f9fafb",
+  "background_color": "#fafafa",
   "theme_color": "#3b82f6",
   "orientation": "portrait-primary",
   "icons": [
