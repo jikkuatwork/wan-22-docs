@@ -1,0 +1,8 @@
+{
+  "name": "wan-22",
+  "web": {
+    "inject": {
+      "analytics": true
+    }
+  }
+}
